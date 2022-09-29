@@ -1,14 +1,15 @@
-import SneakerLogo from '../assets/sneakers.png';
+import { Link } from 'react-router-dom';
+import FoodLogo from '../assets/finger-food.png';
 
 export const NavBar = () => {
 
     return(
-        <div className="flex flex-row bg-[#1B2430]">
-            <div className="bg-[#1B2430]">
-                <img src={SneakerLogo} className="w-16"></img>
+        <div className="flex flex-row bg-[#557174] place-content-between px-6 py-6 ">
+            <div className="bg-[#557174]">
+                <Link to="/"><img src={FoodLogo} className="w-16"/></Link>
             </div>
-            <div className="flex flex-row">
-                <a className="text-[whitesmoke]">ADD NEW</a>
+            <div className="flex flex-row ">
+                <a className="text-[whitesmoke] self-center font-extrabold">ADD NEW</a>
             </div>
         </div>
     )
