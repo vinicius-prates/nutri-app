@@ -1,6 +1,9 @@
  import axios from "axios"
 import { useEffect, useState } from "react"
+import { Card } from "./Card"
 export const LandingPage = () => {
+
+    const url  = "http://localhost:8000/api/foods/"
 
     const getAllData = () => {
         axios.get(url).then((res) =>  {
@@ -10,7 +13,6 @@ export const LandingPage = () => {
         
     }
 
-    const url  = "http://localhost:8000/api/foods/"
     const [apiData, setApiData] = useState([]);
     useEffect(() => {
         getAllData()
@@ -23,11 +25,15 @@ export const LandingPage = () => {
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
             <div>
-                {apiData.filter(item => item.category == 1).map((item, index ) => (
+                {apiData.map((item, index ) => (
                 <div key={index}>
-                    <h1 className="text-white font-bold">{item.food_name}</h1>
-                    <h2 className="text-[#606060] font-thin">R$ {item.food_price}</h2>
-                    <h2 className="text-[#606060] font-thin">{item.calories_per_serving} kcal</h2>
+                    <Card 
+                    food_image={item.food_image}  
+                    food_name={item.food_name}
+                    food_price={item.food_price}
+                    calories_per_serving={item.calories_per_serving}
+                    created_at={item.created_at}
+                         />
                     </div>))}
             </div>
         </div>
