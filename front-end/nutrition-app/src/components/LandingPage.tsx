@@ -21,10 +21,10 @@ export const LandingPage = () => {
 
     
     return(
-        <div className="bg-[#323232] h-screen ">
+        <div className="bg-[#323232]  py-10 ">
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
-            <div>
+            <div className="flex flex-col lg:flex-row items-center align-center flex-wrap">
                 {apiData.map((item, index ) => (
                 <div key={index}>
                     <Card 
