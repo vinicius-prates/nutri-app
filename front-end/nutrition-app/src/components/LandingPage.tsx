@@ -9,22 +9,21 @@ export const LandingPage = () => {
         axios.get(url).then((res) =>  {
             setApiData(res.data)
         }).catch(error => console.error(`Error: ${error}`))
-
         
     }
 
     const [apiData, setApiData] = useState([]);
     useEffect(() => {
         getAllData()
-
-    }, [])
+       
+    },[])
 
     
     return(
         <div className="bg-[#323232]  py-10 ">
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
-            <div className="flex flex-col lg:flex-row items-center align-center flex-wrap">
+            <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
                 {apiData.map((item, index ) => (
                 <div key={index}>
                     <Card 
