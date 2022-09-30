@@ -1,6 +1,16 @@
  import axios from "axios"
 import { useEffect, useState } from "react"
 import { Card } from "./Card"
+
+interface Food {
+    id: number
+    food_image: string
+    food_name: string
+    food_price: number
+    calories_per_serving: number
+    created_at: string
+}
+
 export const LandingPage = () => {
 
     const url  = "http://localhost:8000/api/foods/"
@@ -12,7 +22,7 @@ export const LandingPage = () => {
         
     }
 
-    const [apiData, setApiData] = useState([]);
+    const [apiData, setApiData] = useState<Food[]>([]);
     useEffect(() => {
         getAllData()
        
@@ -24,8 +34,8 @@ export const LandingPage = () => {
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
-                {apiData.map((item, index ) => (
-                <div key={index}>
+                {apiData.map(item => (
+                <div key={item.id}>
                     <Card 
                     food_image={item.food_image}  
                     food_name={item.food_name}
