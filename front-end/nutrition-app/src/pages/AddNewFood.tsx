@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
+import { Link } from 'react-router-dom';
+import FoodLogo from '../assets/finger-food.png';
 
 // DTO == Data transfer object(name given to the JSON)
 interface FoodPostDTO {
@@ -60,43 +62,46 @@ export const AddNewFood = () => {
   };
 
   return (
-    <div>
-      <NavBar />
-      <div className="bg-[#323232] flex justify-center py-10">
-        <form className="flex flex-col w-[80%] justify-center align-center gap-8 bg-[#101010] p-10 text-white rounded-lg" onSubmit={addFood}>
+    <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400">
+       <div className="">
+                <Link to="/"><img src={FoodLogo} className="w-24 pt-6 pl-6"/></Link>
+            </div>
+      <div className=" flex justify-center py-10">
+        <form className="flex flex-col w-[80%] justify-center align-center gap-8  p-6 bg-[#101010] text-white rounded-lg" onSubmit={addFood}>
+          <h1 className="text-center text-2xl "> FoodS!</h1>
           <input
             placeholder="Name"
             name="food_name"
             onChange={onInputChange}
             type="text"
-            className="border-b-2 focus:outline-none px-2 py-1 text-black"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
           ></input>
           <input
             placeholder="Price"
             type="number"
             name="food_price"
             onChange={onInputChange}
-            className="border-b-2 focus:outline-none px-2 py-1 text-black "
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
           ></input>
           <input
             placeholder="Calories"
             type="number"
             name="calories_per_serving"
             onChange={onInputChange}
-            className="border-b-2 focus:outline-none px-2 py-1 text-black"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
           ></input>
           <textarea
             placeholder="Description"
             name="food_description"
             onChange={onInputChange}
-            className="border-b-2 focus:outline-none px-2 py-1 text-black"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
           ></textarea>
           <input
             placeholder="recipe link"
             name="recipe_link"
             onChange={onInputChange}
             type="text"
-            className="border-b-2 focus:outline-none px-2 py-1 text-black"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
           ></input>
           <input
             type="file"
@@ -106,9 +111,9 @@ export const AddNewFood = () => {
                 food_image: evt.target.files![0],
               })
             }
-            className="focus:outline-none px-2 py-1"
+            className="focus:outline-none px-2 py-1 rounded-md"
           ></input>
-          <select name="category" onChange={onInputChange} className="text-black px-2 py-1 focus:outline-none">
+          <select name="category" onChange={onInputChange} className="text-black px-2 py-1 focus:outline-none rounded-md">
             {categories.map((cat) => {
               return (
                 <option value={cat.id} key={cat.id}>
