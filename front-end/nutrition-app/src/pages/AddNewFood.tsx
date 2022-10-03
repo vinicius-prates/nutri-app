@@ -27,7 +27,7 @@ export const AddNewFood = () => {
     food_description: "",
     recipe_link: "",
     food_image: null,
-    category: 0,
+    category: 1,
   });
 
   const url = "http://localhost:8000/api/categories/";
