@@ -62,12 +62,12 @@ export const AddNewFood = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400">
+    <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400 h-full lg:h-screen">
        <div className="">
                 <Link to="/"><img src={FoodLogo} className="w-24 pt-6 pl-6"/></Link>
             </div>
       <div className=" flex justify-center py-10">
-        <form className="flex flex-col w-[80%] justify-center align-center gap-8  p-6 bg-[#101010] text-white rounded-lg" onSubmit={addFood}>
+        <form className="flex flex-col w-[80%] lg:w-[40%] justify-center align-center gap-8  p-6 bg-[#101010] text-white rounded-lg" onSubmit={addFood}>
           <h1 className="text-center text-2xl "> FoodS!</h1>
           <input
             placeholder="Name"
@@ -94,7 +94,7 @@ export const AddNewFood = () => {
             placeholder="Description"
             name="food_description"
             onChange={onInputChange}
-            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md h-40 resize-none"
           ></textarea>
           <input
             placeholder="recipe link"
@@ -122,10 +122,9 @@ export const AddNewFood = () => {
               );
             })}
           </select>
-          <button type="submit" className="bg-[#323232] py-4 rounded-lg"> Add Food</button>
+          <button type="submit" className="bg-[#323232] py-4 rounded-lg font-bold  lg:self-center hover:bg-gradient-to-r  from-blue-500 via-red-400 to-yellow-400  transition hover:duration-500 lg:w-[50%]"> Add Food</button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 };
