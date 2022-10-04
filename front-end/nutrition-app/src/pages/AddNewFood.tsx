@@ -94,7 +94,7 @@ export const AddNewFood = () => {
             placeholder="Description"
             name="food_description"
             onChange={onInputChange}
-            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md h-40 resize-none"
+            className="border-b-2 focus:outline-none px-2 py-1 text-black rounded-md h-80 lg:h-40 resize-none"
           ></textarea>
           <input
             placeholder="recipe link"
@@ -122,7 +122,7 @@ export const AddNewFood = () => {
               );
             })}
           </select>
-          <button type="submit" className="bg-[#323232] py-4 rounded-lg font-bold  lg:self-center hover:bg-gradient-to-r  from-blue-500 via-red-400 to-yellow-400  transition hover:duration-500 lg:w-[50%]"> Add Food</button>
+          <button type="submit" className="bg-[#323232] py-4 rounded-lg font-bold  lg:self-center hover:bg-gradient-to-r   transition duration-500 from-blue-500 via-red-400 to-yellow-400  lg:w-[50%]"> Add Food</button>
         </form>
       </div>
     </div>
