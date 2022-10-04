@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react"
 import { Card } from "./Card"
 
-interface Food {
+export interface Food {
     id: number
     food_image: string
     food_name: string
     food_price: number
     calories_per_serving: number
     created_at: string
+    category: number
 }
 
 export const LandingPage = () => {
@@ -25,16 +26,44 @@ export const LandingPage = () => {
     const [apiData, setApiData] = useState<Food[]>([]);
     useEffect(() => {
         getAllData()
+        axios.get(urlCat).then((res) => setCategories(res.data));
+
        
     },[])
 
-    
+    const [categories, setCategories] = useState<
+    { id: number; category: string }[]
+     >([]);
+
+    const urlCat = "http://localhost:8000/api/categories/"
+
+    const [ choiceCategory, setChoiceCategory] = useState<number | string>('All')
+
+    const setFilterCategory = (evt:any) => {        
+        setChoiceCategory(evt.target.value)
+    }
+
     return(
         <div className="bg-[#323232]  py-10 ">
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
+
+            <div>
+                 <select onChange={setFilterCategory}>
+                    <option key={999999} value={'All'}>All</option>
+                 {categories.map((cat) => {
+              return (
+                <option key={cat.id} value={cat.id}>
+                  {cat.category}
+
+                </option>
+              );
+            })}
+
+                </select>
+                </div>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
-                {apiData.map(item => (
+                {apiData.filter(food => food.category == choiceCategory || choiceCategory == 'All').map(item => (
                 <div key={item.id}>
                     <Card 
                     food_image={item.food_image}  

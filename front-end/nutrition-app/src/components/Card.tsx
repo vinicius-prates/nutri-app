@@ -1,4 +1,7 @@
-export const Card = (props:any) => {
+import { Food } from "./LandingPage"
+
+export const Card = (props: Food) => {
+
 
     return(
         <div className="w-[20rem] lg:w-[40rem]  bg-[whitesmoke] flex flex-col lg:flex-row gap-4 my-8 mx-8  rounded-xl">
