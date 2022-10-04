@@ -1,6 +1,13 @@
-import { Food } from "./LandingPage"
 
-export const Card = (props: Food) => {
+interface CardProps {
+    food_image: string
+    food_name: string
+    food_price: number
+    calories_per_serving: number
+    created_at: string
+}
+
+export const Card = (props: CardProps) => {
 
 
     return(
