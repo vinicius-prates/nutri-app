@@ -20,7 +20,7 @@ export const FoodPage = () => {
         <div>
             <NavBar/>
                 <div className="bg-[#323232] text-[whitesmoke] flex flex-col gap-8 py-24 lg:flex-row  item-center">
-                    <div className="flex flex-row self-center  lg:w-[66%] mx-auto ">
+                    <div className="flex flex-col lg:flex-row self-center  lg:w-[66%] mx-auto ">
 
                         <img src={Food?.food_image} className="bg-center bg-contain object-cover w-full lg:w-[800px] lg:h-[600px] rounded-3xl "/>
                     <div className="text-left m-10 flex flex-col lg:gap-4 ">
