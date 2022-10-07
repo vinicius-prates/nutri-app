@@ -11,7 +11,7 @@ export const Card = (props: CardProps) => {
 
 
     return(
-        <div className="w-[20rem] lg:w-[40rem]  bg-[whitesmoke] flex flex-col lg:flex-row gap-4 my-8 mx-8  rounded-xl">
+        <div className="w-[18rem] lg:w-[40rem]  bg-[whitesmoke] flex flex-col lg:flex-row gap-4 my-8 mx-8  rounded-xl ">
             <div>
                 <img src={props.food_image} className=" bg-center bg-contain object-cover rounded-t-lg lg:rounded-lg w-[20rem] h-[16rem] " alt="food image"/>
             </div>

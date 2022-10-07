@@ -113,7 +113,7 @@ export const AddNewFood = () => {
                 food_image: evt.target.files![0],
               })
             }
-            className="focus:outline-none px-2 py-1"
+            className="focus:outline-none px-2 py-1 lg:self-center"
           ></input>
           <select name="category" onChange={onInputChange} className="text-[whitesmoke] cursor-pointer px-2 py-1 border-slate-600 bg-[#323232] focus:outline-none rounded-t-md">
             {categories.map((cat) => {

@@ -1,6 +1,7 @@
  import axios from "axios"
 import { useEffect, useState } from "react"
 import { Card } from "./Card"
+import { useNavigate } from "react-router-dom";
 
 export interface Food {
     id: number
@@ -15,6 +16,7 @@ export interface Food {
 export const LandingPage = () => {
 
     const url  = "http://localhost:8000/api/foods/"
+    const navigate = useNavigate();
 
     const getAllData = () => {
         axios.get(url).then((res) =>  {
@@ -64,7 +66,8 @@ export const LandingPage = () => {
                 </div>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
                 {apiData.filter(food => food.category == choiceCategory || choiceCategory == 'All').map(item => (
-                <div key={item.id}>
+                <div onClick={() => navigate(`/food/${item.id}`)} key={item.id} className="cursor-pointer">
+                    
                     <Card 
                     food_image={item.food_image}  
                     food_name={item.food_name}
