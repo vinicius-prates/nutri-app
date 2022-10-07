@@ -89,8 +89,8 @@ export const LandingPage = () => {
                 </select>
                 </div>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap gap-12 py-10 ">
-                {apiData.filter(food => food.food_price > choicePrice  &&
-                 food.category == choiceCategory || choiceCategory == 'All'
+                {apiData.filter((food) => food.food_price > choicePrice  &&
+                 food.category == choiceCategory || food.food_price > choicePrice && choiceCategory == 'All'
                   ).map(item => (
                 <div onClick={() => navigate(`/food/${item.id}`)} key={item.id} className="cursor-pointer">
                     
