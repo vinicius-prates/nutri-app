@@ -19,15 +19,23 @@ export const FoodPage = () => {
 
         <div>
             <NavBar/>
-                <div className="bg-[#323232] text-[whitesmoke] flex flex-col gap-2">
-                    
-                    <img src={Food?.food_image} className="bg-center bg-contain object-cover w-full lg:w-[50%]"></img>
-                    <h1 className="text-center text-2xl font-bold"> {Food?.food_name} </h1>
-                    <h2 className="text-2xl font-bold text-green-400 mx-4">R$ {Food?.food_price}</h2>
-                    <h3 className="mx-4 text-2xl">{Food?.calories_per_serving} kcal</h3>
-                    <p className="mx-4">{Food?.food_description}</p>
-                    <a className="text-right mx-4 text-lg italic  text-yellow-400 font-bold" href={Food?.recipe_link}>Recipe link</a>
-                    <p className="text-right mx-4 text-lg italic opacity-50">created at: {Food?.created_at}</p>
+                <div className="bg-[#323232] text-[whitesmoke] flex flex-col gap-8 py-24 lg:flex-row  item-center">
+                    <div className="flex flex-row self-center  lg:w-[66%] mx-auto ">
+
+                        <img src={Food?.food_image} className="bg-center bg-contain object-cover w-full lg:w-[800px] lg:h-[600px] rounded-3xl "/>
+                    <div className="text-left m-10 flex flex-col lg:gap-4 ">
+                    <h1 className=" text-2xl font-bold"> {Food?.food_name} </h1>
+                    <div className="flex flex-col  text-left lg:gap-6">
+                        <h2 className="text-2xl lg:text-4xl mb-2 font-bold text-green-400 lg:mx-0">R$ {Food?.food_price}</h2>
+                        <h3 className="mx-4 text-2xl lg:text-3xl lg:align-end lg:mx-0">{Food?.calories_per_serving} kcal</h3>
+                    </div>
+                    <div className="flex flex-col ">
+                        <p className="mx-4 lg:text-xl lg:mb-10">{Food?.food_description}</p>
+                        <a className="text-right mx-4 text-lg italic  text-yellow-400 font-bold lg:mx-0" href={Food?.recipe_link}>Recipe link</a>
+                        <p className="text-right mx-4 text-lg italic opacity-50 lg:mx-0">created at: {Food?.created_at}</p>
+                    </div>
+                    </div>
+                    </div>
                 </div>
             <Footer/>
         </div>

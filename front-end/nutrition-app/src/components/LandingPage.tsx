@@ -48,7 +48,7 @@ export const LandingPage = () => {
     }
 
     return(
-        <div className="bg-[#323232]  py-10 ">
+        <div className="bg-[#323232]  py-10 min-h-screen">
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
 
@@ -65,7 +65,7 @@ export const LandingPage = () => {
             })}
                 </select>
                 </div>
-            <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
+            <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap gap-12 py-10 ">
                 {apiData.filter(food => food.category == choiceCategory || choiceCategory == 'All').map(item => (
                 <div onClick={() => navigate(`/food/${item.id}`)} key={item.id} className="cursor-pointer">
                     
