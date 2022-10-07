@@ -48,8 +48,8 @@ export const LandingPage = () => {
 
             <h1 className="text-3xl text-[whitesmoke] font-bold py-4 text-center">FoodS!</h1>
 
-            <div>
-                 <select onChange={setFilterCategory}>
+            <div className=" flex flex-row self-center justify-center text-xl">
+                 <select onChange={setFilterCategory} className="focus:outline-none cursor-pointer bg-[#707070] text-[whitesmoke] p-2 rounded-lg">
                     <option key={999999} value={'All'}>All</option>
                  {categories.map((cat) => {
               return (
