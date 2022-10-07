@@ -11,6 +11,8 @@ export interface Food {
     calories_per_serving: number
     created_at: string
     category: number
+    food_description: string
+    recipe_link: string
 }
 
 export const LandingPage = () => {
@@ -61,7 +63,6 @@ export const LandingPage = () => {
                 </option>
               );
             })}
-
                 </select>
                 </div>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap ">
