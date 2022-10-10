@@ -16,7 +16,7 @@ export interface Food {
 }
 
 export const LandingPage = () => {
-
+    const urlCat = "http://localhost:8000/api/categories/"
     const url  = "http://localhost:8000/api/foods/"
     const navigate = useNavigate();
 
@@ -39,7 +39,6 @@ export const LandingPage = () => {
     { id: number; category: string }[]
      >([]);
 
-    const urlCat = "http://localhost:8000/api/categories/"
 
     const [ choiceCategory, setChoiceCategory] = useState<number | string>('All')
     const [choicePrice, setChoicePrice] = useState<number>(0)
