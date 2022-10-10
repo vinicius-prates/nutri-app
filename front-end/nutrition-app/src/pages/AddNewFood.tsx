@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Footer } from "../components/Footer";
-import { NavBar } from "../components/NavBar";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FoodLogo from '../assets/finger-food.png';
+import { Notify } from 'notiflix';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 // DTO == Data transfer object(name given to the JSON)
 interface FoodPostDTO {
@@ -30,8 +30,10 @@ export const AddNewFood = () => {
     category: 1,
   });
 
+
   const url = "http://localhost:8000/api/categories/";
   const foodsUrl = "http://localhost:8000/api/foods/";
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(url).then((res) => setCategories(res.data));
@@ -55,11 +57,52 @@ export const AddNewFood = () => {
       headers: { "Content-Type": "multipart/form-data" },
     });
     console.log(data);
+    navigate("/")
   };
 
   const onInputChange = (evt: any) => {
     setNewFoodData({ ...newFoodData, [evt.target.name]: evt.target.value });
   };
+
+
+
+  const validateNewFoodForm = (evt:any) => {
+        evt.preventDefault()
+
+        if (newFoodData.food_name.length <= 0){
+          Notify.failure("Name field is empty!", {position : "center-top"})  
+          return 
+        }
+
+        if (newFoodData.food_price <= 0 ){
+          Notify.failure("The food price can't be lower than R$1", {position : "center-top"})
+          return
+        }
+
+        if (newFoodData.calories_per_serving < 0){
+          Notify.failure("At least 0 kcal", {position : "center-top"})
+          return
+        }
+
+        if (newFoodData.food_description.length <= 0) {
+          Notify.failure("Description field is empty!", {position : "center-top"})
+          return
+        }
+
+        if (newFoodData.recipe_link.length <= 0) {
+          Notify.failure("Recipe link field is empty!", {position : "center-top"})
+          return
+        }
+
+        if (newFoodData.food_image == null) {
+          Notify.failure("You need to upload a file!", {position : "center-top"})
+          return
+        }
+
+        Report.success('New food added', 'Check it at the home page!', 'Done.')
+        addFood(evt)
+    
+  }
 
   return (
     <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400 h-full lg:h-screen">
@@ -67,7 +110,7 @@ export const AddNewFood = () => {
                 <Link to="/"><img src={FoodLogo} className="w-24 pt-6 pl-6"/></Link>
             </div>
       <div className=" flex justify-center py-10">
-        <form className="flex flex-col w-[80%] lg:w-[40%] justify-center align-center gap-8  p-6 bg-[#101010] text-white rounded-3xl" onSubmit={addFood}>
+        <form className="flex flex-col w-[80%] lg:w-[40%] justify-center align-center gap-8  p-6 bg-[#101010] text-white rounded-3xl" onSubmit={validateNewFoodForm}>
           <h1 className="text-center text-2xl "> FoodS!</h1>
           <input
             placeholder="Name"
@@ -80,7 +123,6 @@ export const AddNewFood = () => {
             placeholder="Price"
             type="number"
             name="food_price"
-            min="1"
             onChange={onInputChange}
             className="border-b-2 border-slate-600 bg-[#323232] focus:outline-none px-2 py-1 text-[whitesmoke] rounded-t-md"
           ></input>
@@ -88,7 +130,6 @@ export const AddNewFood = () => {
             placeholder="Calories"
             type="number"
             name="calories_per_serving"
-            min="1"
             onChange={onInputChange}
             className="border-b-2 border-slate-600 bg-[#323232]  focus:outline-none px-2 py-1 text-[whitesmoke] rounded-t-md"
           ></input>

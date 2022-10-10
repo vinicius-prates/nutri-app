@@ -60,10 +60,12 @@ export const LandingPage = () => {
         }else if(evt.target.value == 3){
             setChoicePrice(199)
         }
-        
+
+ 
         
     }
-    console.log(choicePrice)
+ 
+ 
     return(
         <div className="bg-[#323232]  py-10 min-h-screen">
 
@@ -81,7 +83,7 @@ export const LandingPage = () => {
             })}
                 </select>
                 <select onChange={setFilterPrice} className="focus:outline-none cursor-pointer bg-[#707070] text-[whitesmoke] p-2 rounded-lg">
-                    <option value={0}>R$0 - ∞</option>
+                    <option value={0}>All prices</option>
                     <option value={1}>More than R$50</option>
                     <option value={2}>More than R$100</option>
                     <option value={3}>More than R$200</option>
@@ -89,8 +91,8 @@ export const LandingPage = () => {
                 </select>
                 </div>
             <div className="flex flex-col lg:flex-row items-center justify-center flex-wrap gap-12 py-10 ">
-                {apiData.filter((food) => food.food_price > choicePrice  &&
-                 food.category == choiceCategory || food.food_price > choicePrice && choiceCategory == 'All'
+                {apiData.filter((food) => food.food_price > choicePrice  && food.category == choiceCategory 
+                || food.food_price > choicePrice && choiceCategory == 'All'
                   ).map(item => (
                 <div onClick={() => navigate(`/food/${item.id}`)} key={item.id} className="cursor-pointer">
                     
