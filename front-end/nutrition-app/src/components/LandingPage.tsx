@@ -31,7 +31,6 @@ export const LandingPage = () => {
     useEffect(() => {
         getAllData()
         axios.get(urlCat).then((res) => setCategories(res.data));
-
        
     },[])
 

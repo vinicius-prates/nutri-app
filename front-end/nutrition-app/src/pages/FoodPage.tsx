@@ -19,6 +19,7 @@ export const FoodPage = () => {
     useEffect (() => {
         axios.get(url).then(res => setFood(res.data))
         
+        
     },[])
 
 
@@ -32,6 +33,7 @@ export const FoodPage = () => {
                 axios.delete(url)
                 Report.success('Food deleted!', '', 'OK!');
                 navigate('/')
+                window.location.reload()
 
 
             },
