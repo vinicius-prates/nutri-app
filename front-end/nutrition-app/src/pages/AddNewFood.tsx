@@ -105,7 +105,7 @@ export const AddNewFood = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400 h-full lg:h-screen">
+    <div className="bg-gradient-to-br  from-blue-500 via-red-400 to-yellow-400 h-full ">
        <div className="">
                 <Link to="/"><img src={FoodLogo} className="w-24 pt-6 pl-6"/></Link>
             </div>
